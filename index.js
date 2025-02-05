@@ -1,5 +1,5 @@
 import express from 'express';
-import { MedicRetorna, MedicNomeRetorna, MedicRetornaEspecialidade} from './servico/retornaMedicos_servico.js';
+import { MedicNomeRetorna, MedicRetornaEspecialidade, MedicRetorna } from './serviço/retornamedico_servico.js';
 const app = express();
 
 app.get('/medicos', async (req, res) => {
