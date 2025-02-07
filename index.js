@@ -1,5 +1,5 @@
 import express from 'express';
-import { MedicNomeRetorna, MedicRetornaEspecialidade, MedicRetorna } from './serviço/retornamedico_servico.js';
+import { buscarMedicosPorNome, buscarMedicosPorEspecialidade, buscarTodosMedicos } from './serviço/retornamedico_servico.js';
 const app = express();
 
 app.get('/medicos', async (req, res) => {
@@ -8,20 +8,20 @@ app.get('/medicos', async (req, res) => {
     const especialidade = req.query.especialidade;
     
     if (typeof nome === 'undefined' && typeof especialidade === 'undefined') {
-        medicos = await  MedicRetorna()}
+        medicos = await  buscarTodosMedicos()}
     else if(typeof especialidade === 'undefined'){
         console.log(nome)
-        medicos = await MedicNomeRetorna(nome)
+        medicos = await buscarMedicosPorNome(nome)
     }
     else if(typeof nome === 'undefined'){
-        medicos = await MedicRetornaEspecialidade(especialidade)
+        medicos = await buscarMedicosPorEspecialidade(especialidade)
 
     }
     if (medicos.length > 0) {
         res.json(medicos);
         
     }else {
-        res.status(404).json({ mensagem: "Não há nenhum médico" });
+        res.status(404).json({ mensagem: "Não há nenhum médico, queridinha(o)" });
     }
    
 
@@ -34,4 +34,5 @@ app.listen(9000, () => {
     
 
 })      
+
 

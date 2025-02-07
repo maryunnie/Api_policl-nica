@@ -8,3 +8,4 @@ database : 'clinica'
 });
 
 export default pool;
+

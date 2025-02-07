@@ -6,7 +6,7 @@ async function executaQuery(conexao, query) {
     return resposta;
 }
 
-export async function MedicRetorna()
+export async function buscarTodosMedicos()
 {
     const conexao = await pool.getConnection();
     const query = 'SELECT medicos.id, nome, telefone, especialidades.especialidade FROM medicos INNER JOIN especialidades where medicos.especialidade = especialidades.id order by nome ASC';
@@ -15,7 +15,7 @@ export async function MedicRetorna()
     return medic;
 }
 
-export async function MedicRetornaEspecialidade(especialidade)
+export async function buscarMedicosPorEspecialidade(especialidade)
 
 {   
     const conexao = await pool.getConnection();
@@ -25,7 +25,7 @@ export async function MedicRetornaEspecialidade(especialidade)
     return medicos;
 }
 
-export async function MedicNomeRetorna(nome)
+export async function buscarMedicosPorNome(nome)
 
 {   
     const conexao = await pool.getConnection();
@@ -34,3 +34,6 @@ export async function MedicNomeRetorna(nome)
     conexao.release();
     return mdc;
 }
+
+
+
